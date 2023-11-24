@@ -1,0 +1,48 @@
+const int buttonPin1 = 0;
+const int buttonPin2 = 16;
+const int buttonPin3 = 5;
+const int buzzerPin = 27;
+unsigned long previousMillis = 0;
+const long interval = 3000;  // Intervalo desejado em milissegundos (3 segundos)
+boolean buzzerActive = false;
+
+void setup() {
+  // Inicialização do Serial
+  Serial.begin(115200);
+  Serial.println("Hello, ESP32!");
+
+  // Configuração dos pinos dos botões como entrada
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(buttonPin3, INPUT);
+
+  // Configuração do pino do buzzer como saída
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  // Leitura do estado dos botões
+  int buttonState1 = digitalRead(buttonPin1);
+  int buttonState2 = digitalRead(buttonPin2);
+  int buttonState3 = digitalRead(buttonPin3);
+
+  // Verificação se algum botão foi pressionado
+  if (buttonState1 == HIGH || buttonState2 == HIGH || buttonState3 == HIGH) {
+    // Imprime um sinal de alerta no Serial
+    Serial.println("Botão pressionado!");
+
+    // Ativa o buzzer para fazer um barulho
+    tone(buzzerPin, 1000); // 1000 é a frequência do som
+    previousMillis = millis();  // Armazena o tempo atual
+    buzzerActive = true;
+  }
+
+  // Verifica se o tempo definido foi atingido
+  if (buzzerActive && millis() - previousMillis >= interval) {
+    noTone(buzzerPin);  // Desliga o som do buzzer após 3 segundos
+    buzzerActive = false;
+  }
+
+  // Coloque aqui qualquer outra lógica do loop principal, se necessário
+  delay(10); // Isso acelera a simulação
+}
