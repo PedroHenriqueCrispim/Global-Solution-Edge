@@ -1,3 +1,8 @@
+Integrantes: 
+Pedro Henrique Crispim - RM99005 
+Rafael Autieri - RM550855
+
+
 Descrição do Problema de Saúde Abordado:
 
 O problema de saúde que motiva nossa proposta está relacionado à falta de eficiência na gestão de utensílios cirúrgicos em hospitais, resultando em atrasos e possíveis complicações para os pacientes. A inconsistência na preparação e disponibilidade de instrumentos cirúrgicos essenciais pode impactar diretamente a qualidade do atendimento e a segurança do paciente.
